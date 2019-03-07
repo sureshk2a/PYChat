@@ -1,6 +1,6 @@
 import socket
 #host,port = socket.gethostbyname(socket.gethostname()),4000
-host = 'localhost'
+host = 'localhost' #Using localhost addr for now
 port = 4000
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 print(host)
