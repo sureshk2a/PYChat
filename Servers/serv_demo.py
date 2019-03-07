@@ -3,10 +3,9 @@ import socket
 host = 'localhost' #Using localhost addr for now
 port = 4000
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-print(host)
 s.bind((host,port))
-print("Started serveron port: ",port)
-s.listen(2)
+print("Started server on : ",host,":",port)
+s.listen(1)
 c,addr = s.accept()
 print("Connected from: ",addr)
 s.send("Hai im Pewds".encode())
