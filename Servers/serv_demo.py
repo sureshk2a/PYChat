@@ -23,8 +23,8 @@ connections  = {};
 print("Started server on : ",host,":",port)
 s.listen(3)
 while True:
-    conn,addr = s.accept()
-    conn.send("Welcome...")
+    conn, addr = s.accept()
+    conn.send("Welcome..." + str(addr[0]) + ":" + str(addr[1]))
     thread_count = thread_count + 1;
     threads[thread_count] = threading.Thread(target = receive_message, args = (conn,))
     threads[thread_count].start()
