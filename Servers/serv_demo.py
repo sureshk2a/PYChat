@@ -1,5 +1,9 @@
 import socket, time, threading
 
+global connections;
+threads = {};
+thread_count = 0;
+
 def receive_message(conn):
     while True:
         msg = conn.recv(1024)
@@ -17,9 +21,11 @@ s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 s.bind((host,port))
 connections  = {};
 print("Started server on : ",host,":",port)
-s.listen(1)
-conn,addr = s.accept()
-conn.send("Welcome...")
-t2 = threading.Thread(target = receive_message, args = (conn,))
-t2.start()
+s.listen(3)
+while True:
+    conn,addr = s.accept()
+    conn.send("Welcome...")
+    thread_count = thread_count + 1;
+    threads[thread_count] = threading.Thread(target = receive_message, args = (conn,))
+    threads[thread_count].start()
 #conn.close()
